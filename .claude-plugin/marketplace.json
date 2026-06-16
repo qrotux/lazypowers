@@ -1,0 +1,12 @@
+{
+  "name": "lazypowers",
+  "owner": {
+    "name": "Ilya"
+  },
+  "plugins": [
+    {
+      "name": "superlazy-cc",
+      "source": "./superlazy-cc"
+    }
+  ]
+}
