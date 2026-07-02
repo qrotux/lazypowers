@@ -33,6 +33,19 @@ execution. Find gaps, placeholders, and inconsistencies.
    realistic; dependency ordering correct; TDD steps where code is written.
 6. Library/API correctness — verify signatures/usage via Context7
    (resolve-library-id → query-docs), WebSearch fallback. Wrong usage Critical.
+7. Parallel readiness — tasks with no mutual `blockedBy` (direct or
+   transitive) form one wave and may run concurrently:
+   - `files` within a wave must be disjoint; overlap without a dependency is
+     Critical (write race).
+   - A `blockedBy` with no real dependency behind it is Important (kills
+     parallelism).
+   - Contracts pinned: a type/signature/name one wave task references from a
+     sibling must be defined in the plan header or a prior contracts task —
+     else Important.
+   - Shared steps (codegen, wiring/registration, cleanup) live in dedicated
+     barrier tasks after the wave — else Important.
+   - Test policy stated when wave tasks share a build unit (defer test runs
+     to the barrier) — else Important; Minor if the plan is single-wave.
 
 ## Output — EXACT format (your final message IS the return value)
 Before returning, RE-READ your output and confirm it matches exactly. The

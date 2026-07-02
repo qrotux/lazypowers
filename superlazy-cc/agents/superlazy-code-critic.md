@@ -37,7 +37,9 @@ git show <sha>            # individual commits as needed
 3. Library correctness — verify external library/API calls via Context7
    (resolve-library-id → query-docs), WebSearch fallback. Misuse Critical.
 4. Cross-task integration — interactions sdd's per-task review can't see (does
-   Task 5 wire to Task 2's interface?). Mismatches Critical/Important.
+   Task 5 wire to Task 2's interface?). Mismatches Critical/Important. Include
+   parallel-wave defects: duplicated helpers, interface drift between
+   independently written tasks, mismatches surfacing only at the barrier.
 5. Security — injection, secret handling, unsafe shell/SQL in the diff.
 6. Test reality — real assertions vs theater (assert true, no-op mocks,
    never-failing). Theater is Important.

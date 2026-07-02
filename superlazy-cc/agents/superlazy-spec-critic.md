@@ -33,7 +33,11 @@ wrong, missing, or unfounded — do not praise.
    (`mcp__context7__resolve-library-id` then `mcp__context7__query-docs`) first;
    fall back to WebSearch. Assuming a library does something it can't is Critical.
 6. Decomposability — implementable as a single coherent plan, or does it smuggle
-   multiple independent subsystems that should be split?
+   multiple independent subsystems that should be split? Also: does the design
+   let independent surfaces be built file-disjoint in parallel? Needless
+   serialization of independent surfaces is Minor/Important. Do NOT demand an
+   execution/parallelism section in the spec — execution policy lives in the
+   pipeline, not the spec.
 
 ## Verifying library/API claims
 - `mcp__context7__resolve-library-id` with the library name → pick best match →
